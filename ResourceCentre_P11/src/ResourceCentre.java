@@ -3,14 +3,15 @@ import java.util.ArrayList;
 public class ResourceCentre {
 
 
+
 	private static final int OPTION_ADDITEM = 2;
+
 
 	private static final int ITEM_RETURN = 4;
 	private static final int ITEM_LOAN = 3;
 	private static final int ITEM_ADD = 2;
 	private static final int ITEM_VIEW = 1;
 	private static final int QUIT = 5;
-
 
 	public static void main(String[] args) {
 
@@ -35,16 +36,13 @@ public class ResourceCentre {
 				ResourceCentre.viewAllChromebook(chromebookList);
 
 			} else if (option == ITEM_ADD) {
+
+				// Add a new item
 				// Add a new item
 
-				ResourceCentre.setHeader("ADD");			
-				itemTypeMenu();
-				
-
-
 				ResourceCentre.setHeader("ADD");
-				itemTypeMenu();
 
+				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
@@ -63,23 +61,18 @@ public class ResourceCentre {
 				}
 
 			} else if (option == ITEM_LOAN) {
+
 				// Loan item
-
-				ResourceCentre.setHeader("LOAN");			
-				itemTypeMenu();
 				
-
-
 				ResourceCentre.setHeader("LOAN");
 				itemTypeMenu();
-
-
+				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
 					// Loan camcorder
 					ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == OPTION_ADDITEM) {
+				} else if (itemType == 2) {
 					// Loan Chromebook
 					ResourceCentre.loanChromebook(chromebookList);
 				} else {
@@ -87,17 +80,12 @@ public class ResourceCentre {
 				}
 
 
-			} else if (option == 4) {
-				// Return item
-				ResourceCentre.setHeader("RETURN");				
-				itemTypeMenu();
-				
 
-			} else if (option == ITEM_RETURN) {
+			}  else if (option == ITEM_RETURN) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");
-				itemTypeMenu();
 
+				itemTypeMenu();
 
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
@@ -144,28 +132,12 @@ public class ResourceCentre {
 		Helper.line(80, "-");
 	}
 
-	public static String showAvailability(boolean isAvailable) {
-		String avail;
-
-		if (isAvailable == true) {
-			avail = "Yes";
-		} else {
-			avail = "No";
-		}
-		return avail;
-	}
 
 	// ================================= Option 1 View =================================
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 
 		for (int i = 0; i < camcorderList.size(); i++) {
-
-			//String assetTag = camcorderList.get(i).getAssetTag();
-			//String description = camcorderList.get(i).getDescription();
-			//String showAvailability = ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable());
-			//String dueDate = camcorderList.get(i).getDueDate();
-			//int opticalZoom = camcorderList.get(i).getOpticalZoom();
 			output += String.format("%-20s\n", camcorderList.get(i).toString());
 
 		}
@@ -186,12 +158,6 @@ public class ResourceCentre {
 		String output = "";
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
-
-			//String assetTag = chromebookList.get(i).getAssetTag();
-			//String description = chromebookList.get(i).getDescription();
-			//String showAvailability = ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable());
-			//String dueDate = chromebookList.get(i).getDueDate();
-			//String os = chromebookList.get(i).getOs();
 			output += String.format("%-20s\n", chromebookList.get(i).toString());
 		}
 		return output;
@@ -242,7 +208,7 @@ public class ResourceCentre {
 	// ================================= Option 3 Loan =================================
 
 	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
-
+		//done by viron
 		boolean isLoaned = false;
 
 		for (int i = 0; i < camcorderList.size(); i++) {
@@ -342,8 +308,9 @@ public class ResourceCentre {
 		boolean isReturned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
-					&& chromebookList.get(i).getIsAvailable() == false) {
+			boolean assetTag = tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+					&& chromebookList.get(i).getIsAvailable() == false;
+			if (assetTag) {
 				chromebookList.get(i).setIsAvailable(true);
 				chromebookList.get(i).setDueDate("");
 				isReturned = true;
