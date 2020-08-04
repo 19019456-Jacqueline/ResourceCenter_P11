@@ -12,7 +12,7 @@ public class Item {
 		this.isAvailable = true;
 	}
 	public String toString() {
-		
+		String output = String.format("%-10s %-30s %-10s %-10s\n", getAssetTag(), getDescription(), getIsAvailable(), getDueDate());
 		// Write your codes here
 		return null;
 	}
