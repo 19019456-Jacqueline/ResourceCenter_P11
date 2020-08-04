@@ -128,7 +128,6 @@ public class ResourceCentre {
 
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			//eukuang
 			String assetTag = camcorderList.get(i).getAssetTag();
 			String description = camcorderList.get(i).getDescription();
 			String showAvailability = ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable());
