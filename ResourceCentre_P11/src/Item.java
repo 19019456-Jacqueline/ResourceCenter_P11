@@ -12,7 +12,7 @@ public class Item {
 		this.isAvailable = true;
 	}
 	public String toString() {
-		String output = String.format("%-10s %-30s %-10s %-10s", getAssetTag(), getDescription(), ResourceCentre.showAvailability(getIsAvailable()), getDueDate());
+		String output = String.format("%-10s %-30s %-10s %-10s", getAssetTag(), getDescription(), showAvailability(getIsAvailable()), getDueDate());
 		// Write your codes here
 		return output;
 	}
@@ -38,6 +38,17 @@ public class Item {
 
 	public void setIsAvailable(boolean isAvailable) {
 		this.isAvailable = isAvailable;
+	}
+	
+	public static String showAvailability(boolean isAvailable) {
+		String avail;
+
+		if (isAvailable == true) {
+			avail = "Yes";
+		} else {
+			avail = "No";
+		}
+		return avail;
 	}
 }
 
