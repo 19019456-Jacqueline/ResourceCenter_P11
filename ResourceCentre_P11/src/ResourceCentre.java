@@ -130,20 +130,18 @@ public class ResourceCentre {
 		return avail;
 	}
 
-	// ================================= Option 1 View
-	// =================================
+	// ================================= Option 1 View =================================
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			String assetTag = camcorderList.get(i).getAssetTag();
-			String description = camcorderList.get(i).getDescription();
-			String showAvailability = ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable());
-			String dueDate = camcorderList.get(i).getDueDate();
-			int opticalZoom = camcorderList.get(i).getOpticalZoom();
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", assetTag, description, showAvailability, dueDate,
-					opticalZoom);
+			//String assetTag = camcorderList.get(i).getAssetTag();
+			//String description = camcorderList.get(i).getDescription();
+			//String showAvailability = ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable());
+			//String dueDate = camcorderList.get(i).getDueDate();
+			//int opticalZoom = camcorderList.get(i).getOpticalZoom();
+			output += String.format("%-20s\n", camcorderList.get(i).toString());
 
 		}
 		return output;
@@ -164,13 +162,12 @@ public class ResourceCentre {
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
 
-			String assetTag = chromebookList.get(i).getAssetTag();
-			String description = chromebookList.get(i).getDescription();
-			String showAvailability = ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable());
-			String dueDate = chromebookList.get(i).getDueDate();
-			String os = chromebookList.get(i).getOs();
-			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", assetTag, description, showAvailability, dueDate,
-					os);
+			//String assetTag = chromebookList.get(i).getAssetTag();
+			//String description = chromebookList.get(i).getDescription();
+			//String showAvailability = ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable());
+			//String dueDate = chromebookList.get(i).getDueDate();
+			//String os = chromebookList.get(i).getOs();
+			output += String.format("%-20s\n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
@@ -184,8 +181,7 @@ public class ResourceCentre {
 		System.out.println(output);
 	}
 
-	// ================================= Option 2 Add
-	// =================================
+	// ================================= Option 2 Add =================================
 	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
@@ -218,8 +214,7 @@ public class ResourceCentre {
 		System.out.println("Chromebook added");
 	}
 
-	// ================================= Option 3 Loan
-	// =================================
+	// ================================= Option 3 Loan =================================
 
 	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
 
@@ -286,8 +281,7 @@ public class ResourceCentre {
 
 	}
 
-	// ================================= Option 4 Return
-	// =================================
+	// ================================= Option 4 Return =================================
 	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		boolean isReturned = false;
 
