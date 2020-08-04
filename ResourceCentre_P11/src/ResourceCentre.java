@@ -2,7 +2,16 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
+<<<<<<< HEAD
 	private static final int OPTION_ADDITEM = 2;
+=======
+	private static final int ITEM_RETURN = 4;
+	private static final int ITEM_LOAN = 3;
+	private static final int ITEM_ADD = 2;
+	private static final int ITEM_VIEW = 1;
+	private static final int QUIT = 5;
+
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 	public static void main(String[] args) {
 
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
@@ -15,21 +24,28 @@ public class ResourceCentre {
 
 		int option = 0;
 
-		while (option != 5) {
+		while (option != QUIT) {
 
 			ResourceCentre.menu();
 			option = Helper.readInt("Enter an option > ");
 
-			if (option == 1) {
+			if (option == ITEM_VIEW) {
 				// View all items
 				ResourceCentre.viewAllCamcorder(camcorderList);
 				ResourceCentre.viewAllChromebook(chromebookList);
 
-			} else if (option == 2) {
+			} else if (option == ITEM_ADD) {
 				// Add a new item
+<<<<<<< HEAD
 				ResourceCentre.setHeader("ADD");			
 				itemTypeMenu();
 				
+=======
+
+				ResourceCentre.setHeader("ADD");
+				itemTypeSelect();
+
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -46,11 +62,18 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 3) {
+			} else if (option == ITEM_LOAN) {
 				// Loan item
+<<<<<<< HEAD
 				ResourceCentre.setHeader("LOAN");			
 				itemTypeMenu();
 				
+=======
+
+				ResourceCentre.setHeader("LOAN");
+				itemTypeSelect();
+
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -63,11 +86,19 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
+<<<<<<< HEAD
 			} else if (option == 4) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");				
 				itemTypeMenu();
 				
+=======
+			} else if (option == ITEM_RETURN) {
+				// Return item
+				ResourceCentre.setHeader("RETURN");
+				itemTypeSelect();
+
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
 					// Return camcorder
@@ -79,7 +110,7 @@ public class ResourceCentre {
 					System.out.println("Invalid type");
 				}
 
-			} else if (option == 5) {
+			} else if (option == QUIT) {
 				System.out.println("Bye!");
 			} else {
 				System.out.println("Invalid option");
@@ -89,7 +120,11 @@ public class ResourceCentre {
 
 	}
 
+<<<<<<< HEAD
 	private static void itemTypeMenu() {
+=======
+	private static void itemTypeSelect() {
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 		ResourceCentre.setHeader("ITEM TYPES");
 		System.out.println("1. Camcorder");
 		System.out.println("2. Chromebook");
@@ -105,7 +140,7 @@ public class ResourceCentre {
 		Helper.line(80, "-");
 
 	}
-	
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -123,24 +158,30 @@ public class ResourceCentre {
 		return avail;
 	}
 
-	//================================= Option 1 View =================================
+	// ================================= Option 1 View =================================
 	public static String retrieveAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		String output = "";
 
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			//String assetTag = camcorderList.get(i).getAssetTag();
+			//String description = camcorderList.get(i).getDescription();
+			//String showAvailability = ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable());
+			//String dueDate = camcorderList.get(i).getDueDate();
+			//int opticalZoom = camcorderList.get(i).getOpticalZoom();
+			output += String.format("%-20s\n", camcorderList.get(i).toString());
+
 		}
 		return output;
 	}
+
 	public static void viewAllCamcorder(ArrayList<Camcorder> camcorderList) {
 		ResourceCentre.setHeader("CAMCORDER LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-				"AVAILABLE", "DUE DATE","OPTICAL ZOOM");
-		 output += retrieveAllCamcorder(camcorderList);	
+
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
+				"DUE DATE", "OPTICAL ZOOM");
+		output += retrieveAllCamcorder(camcorderList);
+
 		System.out.println(output);
 	}
 
@@ -149,70 +190,75 @@ public class ResourceCentre {
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
-					chromebookList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
-					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			//String assetTag = chromebookList.get(i).getAssetTag();
+			//String description = chromebookList.get(i).getDescription();
+			//String showAvailability = ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable());
+			//String dueDate = chromebookList.get(i).getDueDate();
+			//String os = chromebookList.get(i).getOs();
+			output += String.format("%-20s\n", chromebookList.get(i).toString());
 		}
 		return output;
 	}
+
 	public static void viewAllChromebook(ArrayList<Chromebook> chromebookList) {
-		
+
 		ResourceCentre.setHeader("CHROMEBOOK LIST");
-		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION",
-				 "AVAILABLE", "DUE DATE","OPERATING SYSTEM");
-		 output += retrieveAllChromebook(chromebookList);
+		String output = String.format("%-10s %-30s %-10s %-10s %-20s\n", "ASSET TAG", "DESCRIPTION", "AVAILABLE",
+				"DUE DATE", "OPERATING SYSTEM");
+		output += retrieveAllChromebook(chromebookList);
 		System.out.println(output);
 	}
 
-	//================================= Option 2 Add =================================
+	// ================================= Option 2 Add =================================
 	public static Camcorder inputCamcorder() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		int zoom = Helper.readInt("Enter optical zoom > ");
 
-		Camcorder cc= new Camcorder(tag, description, zoom);
+		Camcorder cc = new Camcorder(tag, description, zoom);
 		return cc;
-		
+
 	}
+
 	public static void addCamcorder(ArrayList<Camcorder> camcorderList, Camcorder cc) {
-		
+
 		camcorderList.add(cc);
 		System.out.println("Camcorder added");
 	}
-	
+
 	public static Chromebook inputChromebook() {
 		String tag = Helper.readString("Enter asset tag > ");
 		String description = Helper.readString("Enter description > ");
 		String os = Helper.readString("Enter operating system > ");
 
-		Chromebook cb= new Chromebook(tag, description, os);
+		Chromebook cb = new Chromebook(tag, description, os);
 		return cb;
-		
-	}	
+
+	}
+
 	public static void addChromebook(ArrayList<Chromebook> chromebookList, Chromebook cb) {
 
 		chromebookList.add(cb);
 		System.out.println("Chromebook added");
 	}
-	
-	//================================= Option 3 Loan =================================
+
+	// ================================= Option 3 Loan =================================
+
 	public static boolean doLoanCamcorder(ArrayList<Camcorder> camcorderList, String tag, String dueDate) {
-		
+
 		boolean isLoaned = false;
 
 		for (int i = 0; i < camcorderList.size(); i++) {
-			
+
 			String assetTag = camcorderList.get(i).getAssetTag();
-			
-			if (tag.equalsIgnoreCase(assetTag)				
-					&& camcorderList.get(i).getIsAvailable() == true) {
-				
+
+			if (tag.equalsIgnoreCase(assetTag) && camcorderList.get(i).getIsAvailable() == true) {
+
 				camcorderList.get(i).setIsAvailable(false);
 				camcorderList.get(i).setDueDate(dueDate);
-				
+
 				isLoaned = true;
-				
+
 			}
 		}
 		return isLoaned;
@@ -222,14 +268,13 @@ public class ResourceCentre {
 		ResourceCentre.viewAllCamcorder(camcorderList);
 		String tag = Helper.readString("Enter asset tag > ");
 		String due = Helper.readString("Enter due date > ");
-		Boolean isLoaned =doLoanCamcorder(camcorderList, tag, due);
+		Boolean isLoaned = doLoanCamcorder(camcorderList, tag, due);
 		if (isLoaned == false) {
 			System.out.println("Invalid asset tag");
 		} else {
 			System.out.println("Camcorder " + tag + " loaned out");
 		}
 	}
-	
 
 	public static boolean doLoanChromebook(ArrayList<Chromebook> chromebookList, String tag, String dueDate) {
 		// write your code here
@@ -239,12 +284,12 @@ public class ResourceCentre {
 			String assetTag = chromebookList.get(i).getAssetTag();
 			if (tag.equalsIgnoreCase(assetTag)
 					&& chromebookList.get(i).getIsAvailable() == true) {
-				
+
 				chromebookList.get(i).setIsAvailable(false);
 				chromebookList.get(i).setDueDate(dueDate);
-				
+
 				isLoaned = true;
-				
+
 			}
 		}
 		return isLoaned;
@@ -255,44 +300,48 @@ public class ResourceCentre {
 		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
 		String due = Helper.readString("Enter due date > ");
-		Boolean isLoaned =doLoanChromebook(chromebookList, tag, due);
+		Boolean isLoaned = doLoanChromebook(chromebookList, tag, due);
 		if (isLoaned == false) {
 			System.out.println("Invalid asset tag");
 		} else {
 			System.out.println("Chromebook " + tag + " loaned out");
-		}	
-		
+
+		}
+
 	}
-	//================================= Option 4 Return =================================
-	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList,String tag) {
+
+	// ================================= Option 4 Return =================================
+	public static boolean doReturnCamcorder(ArrayList<Camcorder> camcorderList, String tag) {
 		boolean isReturned = false;
 
 		for (int i = 0; i < camcorderList.size(); i++) {
-			if (tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
-					&& camcorderList.get(i).getIsAvailable() == false) {
+			boolean assetTag = tag.equalsIgnoreCase(camcorderList.get(i).getAssetTag())
+					&& camcorderList.get(i).getIsAvailable() == false;
+			if (assetTag) {
 				camcorderList.get(i).setIsAvailable(true);
 				camcorderList.get(i).setDueDate("");
 				isReturned = true;
-				
+
 			}
 		}
 		return isReturned;
-		
+
 	}
 
 	public static void returnCamcorder(ArrayList<Camcorder> camcorderList) {
 		ResourceCentre.viewAllCamcorder(camcorderList);
 		String tag = Helper.readString("Enter asset tag > ");
 		Boolean isReturned = doReturnCamcorder(camcorderList, tag);
-		
+
 		if (isReturned == false) {
 			System.out.println("Invalid asset tag");
 		} else {
 			System.out.println("Camcorder " + tag + " returned");
 		}
 	}
+
 	// write your doReturnChromebook code here
-	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList,String tag) {
+	public static boolean doReturnChromebook(ArrayList<Chromebook> chromebookList, String tag) {
 		boolean isReturned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
@@ -301,24 +350,24 @@ public class ResourceCentre {
 				chromebookList.get(i).setIsAvailable(true);
 				chromebookList.get(i).setDueDate("");
 				isReturned = true;
-				
+
 			}
 		}
 		return isReturned;
-		
+
 	}
+
 	public static void returnChromebook(ArrayList<Chromebook> chromebookList) {
 		// write your code here
 		ResourceCentre.viewAllChromebook(chromebookList);
 		String tag = Helper.readString("Enter asset tag > ");
 		Boolean isReturned = doReturnChromebook(chromebookList, tag);
-		
+
 		if (isReturned == false) {
 			System.out.println("Invalid asset tag");
 		} else {
 			System.out.println("Chromebook " + tag + " returned");
 		}
 	}
-
 
 }
