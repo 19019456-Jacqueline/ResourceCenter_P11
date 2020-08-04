@@ -151,10 +151,12 @@ public class ResourceCentre {
 		// write your code here
 		for (int i = 0; i < chromebookList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", chromebookList.get(i).getAssetTag(),
-					chromebookList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable()),
-					chromebookList.get(i).getDueDate(),chromebookList.get(i).getOs());
+			String assetTag = chromebookList.get(i).getAssetTag();
+			String description = chromebookList.get(i).getDescription();
+			String showAvailability = ResourceCentre.showAvailability(chromebookList.get(i).getIsAvailable());
+			String dueDate = chromebookList.get(i).getDueDate();
+			String os = chromebookList.get(i).getOs();
+			output += String.format("%-10s %-30s %-10s %-10s %-20s\n", assetTag,description, showAvailability,dueDate,os);
 		}
 		return output;
 	}
