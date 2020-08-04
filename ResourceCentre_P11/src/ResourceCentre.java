@@ -2,12 +2,16 @@ import java.util.ArrayList;
 
 public class ResourceCentre {
 
+<<<<<<< HEAD
+	private static final int OPTION_ADDITEM = 2;
+=======
 	private static final int ITEM_RETURN = 4;
 	private static final int ITEM_LOAN = 3;
 	private static final int ITEM_ADD = 2;
 	private static final int ITEM_VIEW = 1;
 	private static final int QUIT = 5;
 
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 	public static void main(String[] args) {
 
 		ArrayList<Camcorder> camcorderList = new ArrayList<Camcorder>();
@@ -32,10 +36,16 @@ public class ResourceCentre {
 
 			} else if (option == ITEM_ADD) {
 				// Add a new item
+<<<<<<< HEAD
+				ResourceCentre.setHeader("ADD");			
+				itemTypeMenu();
+				
+=======
 
 				ResourceCentre.setHeader("ADD");
 				itemTypeSelect();
 
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
@@ -54,27 +64,41 @@ public class ResourceCentre {
 
 			} else if (option == ITEM_LOAN) {
 				// Loan item
+<<<<<<< HEAD
+				ResourceCentre.setHeader("LOAN");			
+				itemTypeMenu();
+				
+=======
 
 				ResourceCentre.setHeader("LOAN");
 				itemTypeSelect();
 
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
 				if (itemType == 1) {
 					// Loan camcorder
 					ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == 2) {
+				} else if (itemType == OPTION_ADDITEM) {
 					// Loan Chromebook
 					ResourceCentre.loanChromebook(chromebookList);
 				} else {
 					System.out.println("Invalid type");
 				}
 
+<<<<<<< HEAD
+			} else if (option == 4) {
+				// Return item
+				ResourceCentre.setHeader("RETURN");				
+				itemTypeMenu();
+				
+=======
 			} else if (option == ITEM_RETURN) {
 				// Return item
 				ResourceCentre.setHeader("RETURN");
 				itemTypeSelect();
 
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 				int itemType = Helper.readInt("Enter option to select item type > ");
 				if (itemType == 1) {
 					// Return camcorder
@@ -96,7 +120,11 @@ public class ResourceCentre {
 
 	}
 
+<<<<<<< HEAD
+	private static void itemTypeMenu() {
+=======
 	private static void itemTypeSelect() {
+>>>>>>> branch 'master' of https://github.com/19019456-Jacqueline/ResourceCenter_P11
 		ResourceCentre.setHeader("ITEM TYPES");
 		System.out.println("1. Camcorder");
 		System.out.println("2. Chromebook");
@@ -243,7 +271,8 @@ public class ResourceCentre {
 		boolean isLoaned = false;
 
 		for (int i = 0; i < chromebookList.size(); i++) {
-			if (tag.equalsIgnoreCase(chromebookList.get(i).getAssetTag())
+			String assetTag = chromebookList.get(i).getAssetTag();
+			if (tag.equalsIgnoreCase(assetTag)
 					&& chromebookList.get(i).getIsAvailable() == true) {
 
 				chromebookList.get(i).setIsAvailable(false);
