@@ -137,6 +137,40 @@ public class ResourceCentreTest {
 	
 	@Test
 	public void doLoanChromebookTest() {
+		Boolean ok;
+		doLoanAvailableChromebook();	
+		doLoanUnavailableChromebook();
+		doLoanNonExistentChromebook();
+		
+	}
+
+	private void doLoanNonExistentChromebook() {
+		//boundary
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		//normal
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
+		assertTrue("Test if an available item is ok to loan?", ok);		
+		//error condition
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0013", "8-8-2020" );
+		assertFalse("Test that non-esiting item is NOT ok to loan?", ok);
+	}
+
+	private void doLoanUnavailableChromebook() {
+		//boundary
+		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
+		ResourceCentre.addChromebook(chromebookList, cb1);
+		//normal
+		Boolean ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
+		assertTrue("Test if an available item is ok to loan?", ok);		
+		//error
+		ResourceCentre.addChromebook(chromebookList, cb2);
+		cb2.setIsAvailable(false);
+		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020" );
+		assertFalse("Test that un-available item is NOT ok to loan?", ok);
+	}
+
+	private void doLoanAvailableChromebook() {
 		//boundary
 		assertNotNull("Test if there is valid Chromebook arraylist to add to", chromebookList);
 		ResourceCentre.addChromebook(chromebookList, cb1);
@@ -145,21 +179,11 @@ public class ResourceCentreTest {
 		assertTrue("Test if an available item is ok to loan?", ok);		
 		//error condition
 		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0011", "8-8-2020" );
-		assertFalse("Test if the same item is NOT ok to loan again?", ok);	
-		//error
-		ResourceCentre.addChromebook(chromebookList, cb2);
-		cb2.setIsAvailable(false);
-		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0012", "8-8-2020" );
-		assertFalse("Test that un-available item is NOT ok to loan?", ok);
-		//error condition
-		ok = ResourceCentre.doLoanChromebook(chromebookList, "CB0013", "8-8-2020" );
-		assertFalse("Test that non-esiting item is NOT ok to loan?", ok);
-		
+		assertFalse("Test if the same item is NOT ok to loan again?", ok);
 	}
 	
 	@Test
 	public void doReturnCamcorderTest() {
-		Boolean isReturned;
 		doReturnAvalableCamcorder();
 		doReturnNotExistingCamcorder();
 		
